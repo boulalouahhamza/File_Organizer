@@ -1,0 +1,103 @@
+========================================
+FILE ORGANIZER - HOW TO USE
+========================================
+
+DESCRIPTION:
+This Python script automatically organizes files in your Downloads folder.
+It moves files into the correct folders based on their extensions:
+- Music
+- Videos
+- Pictures
+- Documents
+
+========================================
+REQUIREMENTS
+========================================
+
+You need Python 3 installed on your system.
+
+Install required libraries:
+
+pip install watchdog plyer
+
+========================================
+SETUP
+========================================
+
+1. Open the script file (main.py or your file name).
+
+2. Make sure these paths are correct for your system:
+
+downloads_dir = "/home/your-username/Downloads"
+music_dir = "/home/your-username/Music"
+video_dir = "/home/your-username/Videos"
+pictures_dir = "/home/your-username/Pictures"
+documents_dir = "/home/your-username/Documents"
+
+3. Update them if needed.
+
+========================================
+HOW TO RUN
+========================================
+
+Run the program using:
+
+python3 main.py
+
+After running, you will see:
+
+File organizer is running and monitoring Downloads folder...
+
+========================================
+HOW IT WORKS
+========================================
+
+- The script monitors the Downloads folder in real time.
+- When a new file appears, it checks its extension.
+- It moves the file automatically to the correct folder.
+- A desktop notification is shown after each move.
+
+========================================
+STOP THE PROGRAM
+========================================
+
+Press:
+
+CTRL + C
+
+========================================
+OPTIONAL: RUN AT STARTUP (LINUX)
+========================================
+
+1. Create a service file:
+
+sudo nano /etc/systemd/system/file-organizer.service
+
+2. Paste:
+
+[Unit]
+Description=File Organizer Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /path/to/main.py
+WorkingDirectory=/path/to/
+Restart=always
+User=your-username
+
+[Install]
+WantedBy=multi-user.target
+
+3. Enable service:
+
+sudo systemctl enable file-organizer.service
+sudo systemctl start file-organizer.service
+
+========================================
+NOTES
+========================================
+
+- Works on Linux (Ubuntu recommended)
+- Keep the script running in background
+- Ensure notification system (plyer) works on your desktop
+========================================
